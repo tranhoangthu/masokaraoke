@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Mã Số Karaoke Vietnam 88k+ - Trần Hoàng Thứ (HoangThuIT)</title>
+
+  <!-- SEO & Social Meta -->
+  <meta name="description"
+    content="Ứng dụng tra cứu mã số bài hát Karaoke Việt Nam 88,000+ bài: Arirang Vol 66 (Vocal/Chorus), Acnos Soncamedia Vol 62, MusicCore Vol 102, Paramax Vol 52, California, Việt KTV, Vitek VTB. Bản quyền thuộc Trần Hoàng Thứ - HoangThuIT.">
+  <meta name="author" content="Trần Hoàng Thứ - HoangThuIT">
+  <meta name="theme-color" content="#0B0F19">
+
+  <!-- PWA & Mobile Icons -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="icons/ic_launcher_list.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Karaoke VN">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-company="a">
+
+  <!-- Subtle Glow Background Accents -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <!-- Android Top App Bar & PC Desktop Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand" id="brandHomeBtn" role="button" tabindex="0" title="Về trang chủ Tra cứu">
+        <div class="logo-wrapper">
+          <img src="icons/hoangthulogo.jpg" alt="Logo Karaoke Việt Nam" class="app-logo">
+        </div>
+        <div class="brand-text">
+          <h1 class="app-title">KARAOKE <span class="badge-vn">VN</span></h1>
+          <span class="copyright-tag">© HoangThuIT</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation Tabs (Visible on PC >= 900px) -->
+      <nav class="desktop-nav-bar" aria-label="Điều hướng PC">
+        <button type="button" class="desktop-nav-btn active" data-activity="search" id="pcNavSearch">
+          <span class="nav-icon">🎵</span> Tra cứu
+        </button>
+        <button type="button" class="desktop-nav-btn" data-activity="fav" id="pcNavFav">
+          <span class="nav-icon">❤️</span> Yêu thích
+          <span class="desktop-badge" id="pcFavBadge" style="display: none;">0</span>
+        </button>
+        <button type="button" class="desktop-nav-btn" data-activity="history" id="pcNavHistory">
+          <span class="nav-icon">🕒</span> Lịch sử
+        </button>
+        <button type="button" class="desktop-nav-btn" data-activity="utilities" id="pcNavUtilities">
+          <span class="nav-icon">⚙️</span> Tiện ích
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Theme Toggle (Light / Dark) -->
+        <button type="button" class="btn-appbar" id="btnThemeToggle" title="Chuyển chế độ Sáng / Tối"
+          aria-label="Giao diện sáng tối">
+          <span class="theme-icon-sun">☀️</span>
+          <span class="theme-icon-moon">🌙</span>
+        </button>
+
+        <!-- More Menu (3 dots - Mobile) -->
+        <button type="button" class="btn-appbar btn-mobile-more" id="btnMoreMenu" title="Menu tiện ích"
+          aria-label="Mở menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path
+              d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Android Horizontal Tabs (7 Karaoke Systems) -->
+    <nav class="company-tabs" aria-label="Chọn đầu karaoke">
+      <button type="button" class="tab-btn active" data-tab="a" id="tab-arirang">
+        <span class="tab-brand-icon-box"><img src="icons/arirang5.png" alt="Arirang" class="tab-brand-img"></span>
+        <span class="tab-label">Arirang</span>
+        <span class="tab-count">20k</span>
+      </button>
+
+      <button type="button" class="tab-btn" data-tab="acnos" id="tab-acnos">
+        <span class="tab-brand-icon-box"><img src="icons/sonca6.png" alt="Acnos" class="tab-brand-img"></span>
+        <span class="tab-label">Acnos</span>
+        <span class="tab-count">10k</span>
+      </button>
+
+      <button type="button" class="tab-btn" data-tab="m" id="tab-musiccore">
+        <span class="tab-brand-icon-box"><img src="icons/musiccore5.png" alt="MusicCore" class="tab-brand-img"></span>
+        <span class="tab-label">MusicCore</span>
+        <span class="tab-count">10k</span>
+      </button>
+
+      <button type="button" class="tab-btn" data-tab="p" id="tab-paramax">
+        <span class="tab-brand-icon-box"><img src="icons/paramax5.png" alt="Paramax" class="tab-brand-img"></span>
+        <span class="tab-label">Paramax</span>
+        <span class="tab-count">21k</span>
+      </button>
+
+      <button type="button" class="tab-btn" data-tab="c" id="tab-california">
+        <span class="tab-brand-icon-box"><img src="icons/california6.png" alt="California" class="tab-brand-img"></span>
+        <span class="tab-label">California</span>
+        <span class="tab-count">11k</span>
+      </button>
+
+      <button type="button" class="tab-btn" data-tab="v" id="tab-vietktv">
+        <span class="tab-brand-icon-box"><img src="icons/vietktv6.png" alt="Việt KTV" class="tab-brand-img"></span>
+        <span class="tab-label">Việt KTV</span>
+        <span class="tab-count">16k</span>
+      </button>
+
+      <button type="button" class="tab-btn" data-tab="t" id="tab-vitek">
+        <span class="tab-brand-icon-box"><img src="icons/vitekvtb6.png" alt="Vitek VTB" class="tab-brand-img"></span>
+        <span class="tab-label">Vitek VTB</span>
+        <span class="tab-count">9.6k</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Container: Holds Android Activity Screens -->
+  <main class="main-container">
+
+    <!-- ======================================================================
+         ACTIVITY 1: TRA CỨU BÀI HÁT (SEARCH & BROWSE)
+         ====================================================================== -->
+    <section class="app-activity active" id="activitySearch" aria-label="Tra cứu bài hát">
+
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+            stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="searchInput" class="search-input"
+            placeholder="Tìm tên, mã số, viết tắt (stth, cdlv, hbl)..." autocomplete="off" autocorrect="off"
+            autocapitalize="off" spellcheck="false">
+          <span class="desktop-kbd-hint" title="Phím tắt">/</span>
+          <button type="button" class="btn-clear" id="btnClearSearch" title="Xóa tìm kiếm"
+            style="display: none;">✕</button>
+          <button type="button" class="btn-mic" id="btnVoiceSearch" title="Nói tên bài hát">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
+              <path
+                d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Filter Toolbar: Vol and Author Prominently Placed -->
+      <div class="quick-filter-toolbar">
+        <!-- Vol Selector (Extracted out of deep scroll) -->
+        <div class="toolbar-chip-select">
+          <span class="toolbar-chip-icon">💿</span>
+          <select id="volSelect" class="vol-chip-select" title="Chọn Album / Vol">
+            <option value="">Vol: Tất cả</option>
+          </select>
+        </div>
+
+        <!-- Author / Singer Selector -->
+        <button type="button" class="toolbar-btn-author" id="btnOpenAuthorModal" title="Lọc theo Tác giả hoặc Ca sĩ">
+          <span class="toolbar-chip-icon">👤</span>
+          <span id="selectedAuthorText">Tác giả / Ca sĩ</span>
+          <span class="btn-author-clear" id="btnClearAuthorFilter" style="display: none;"
+            title="Bỏ lọc tác giả">✕</span>
+        </button>
+
+        <!-- View Mode Switcher for PC & Mobile -->
+        <div class="view-switch-pills">
+          <button type="button" class="btn-view active" data-view="card" id="btnViewCard" title="Dạng Thẻ (Card View)">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+              <path
+                d="M4 5h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1z" />
+            </svg>
+          </button>
+          <button type="button" class="btn-view" data-view="list" id="btnViewList" title="Dạng Danh Sách (List View)">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+              <path d="M3 5h18v2H3V5zm0 6h18v2H3v-2zm0 6h18v2H3v-2z" />
+            </svg>
+          </button>
+          <button type="button" class="btn-view" data-view="grid" id="btnViewGrid" title="Dạng Lưới (Grid View)">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+              <path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zm-9 9h7v7H4v-7zm9 0h7v7h-7v-7z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Chips (Genre, Language & Vocal/Chorus) -->
+      <div class="filters-scroll" id="filterChips">
+        <button type="button" class="filter-chip active" data-filter="all">Tất cả</button>
+
+        <!-- Special Arirang Vocal & Chorus Filter Chips -->
+        <button type="button" class="filter-chip chip-vocal" data-filter="vocal" id="chipVocal">🎤 Có lời ca
+          (Vocal)</button>
+        <button type="button" class="filter-chip chip-chorus" data-filter="chorus" id="chipChorus">💋 Có tiếng bè
+          (Chorus)</button>
+
+        <button type="button" class="filter-chip" data-filter="vi">🇻🇳 Tiếng Việt</button>
+        <button type="button" class="filter-chip" data-filter="en">🌐 Ngoại ngữ</button>
+        <button type="button" class="filter-chip" data-filter="remix">⚡ Remix</button>
+        <button type="button" class="filter-chip" data-filter="foreign_vi">🌸 Nhạc Hoa</button>
+        <button type="button" class="filter-chip" data-filter="g1">🎸 Nhạc Trẻ</button>
+        <button type="button" class="filter-chip" data-filter="g2">🎻 Bolero</button>
+        <button type="button" class="filter-chip" data-filter="g3">🌾 Quê Hương</button>
+      </div>
+
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span class="song-count-text" id="resultsCount">20,333 bài hát</span>
+
+        <div class="bar-actions">
+          <select id="sortSelect" class="sort-select-chip" title="Sắp xếp kết quả">
+            <option value="maso_asc">Mã số ↑ (Tăng dần)</option>
+            <option value="maso_desc">Mã số ↓ (Giảm dần)</option>
+            <option value="title_asc">Tên bài hát (A-Z)</option>
+            <option value="vol_desc">Vol mới nhất</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Song List (Card / List / Grid) -->
+      <div class="song-list-wrapper view-card" id="songListContainer" role="list">
+        <div class="loading-state" id="loadingState">
+          <div class="spinner"></div>
+          <p>Đang nạp bài hát...</p>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon">🔍</div>
+        <h3 class="empty-title">Không tìm thấy bài hát</h3>
+        <p class="empty-desc">Thử tìm bằng chữ cái đầu (vd: "stth", "cdlv") hoặc tên không dấu.</p>
+        <button type="button" class="btn-reset" id="btnResetFilters">Đặt lại bộ lọc</button>
+      </div>
+
+      <!-- Load More Container -->
+      <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+        <button type="button" class="btn-load-more" id="btnLoadMore">Xem thêm</button>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACTIVITY 2: BÀI HÁT YÊU THÍCH (SEPARATE ANDROID ACTIVITY SCREEN)
+         ====================================================================== -->
+    <section class="app-activity" id="activityFavorites" style="display: none;" aria-label="Bài hát yêu thích">
+      <div class="activity-header-card">
+        <div class="activity-title-row">
+          <div>
+            <h2 class="activity-title">❤️ Bài hát Yêu thích</h2>
+            <p class="activity-sub">Danh sách bài tủ đã lưu của bạn trên thiết bị này</p>
+          </div>
+          <span class="activity-count-badge" id="favScreenCount">0 bài</span>
+        </div>
+
+        <!-- Action Buttons for Favorites -->
+        <div class="activity-action-btns">
+          <button type="button" class="btn-act-action" id="btnFavExport">📥 Xuất JSON</button>
+          <button type="button" class="btn-act-action" id="btnFavCopyCode">📋 Sao chép mã</button>
+          <button type="button" class="btn-act-action" id="btnFavOpenImport">📂 Phục hồi</button>
+          <button type="button" class="btn-act-action btn-act-danger" id="btnFavClearAll">🗑️ Xóa tất cả</button>
+        </div>
+
+        <!-- Search within favorites -->
+        <div class="search-box activity-search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+            stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="favSearchInput" class="search-input" placeholder="Tìm nhanh trong bài yêu thích...">
+          <button type="button" class="btn-clear" id="btnFavSearchClear" style="display: none;">✕</button>
+        </div>
+
+        <!-- Company filter within favorites -->
+        <div class="filters-scroll" id="favCompanyChips">
+          <button type="button" class="filter-chip active" data-fav-comp="all">⭐ Tất cả hãng</button>
+          <button type="button" class="filter-chip" data-fav-comp="a"><img src="icons/arirang5.png"
+              class="chip-brand-img" alt=""> Arirang</button>
+          <button type="button" class="filter-chip" data-fav-comp="acnos"><img src="icons/sonca6.png"
+              class="chip-brand-img" alt=""> Acnos</button>
+          <button type="button" class="filter-chip" data-fav-comp="m"><img src="icons/musiccore5.png"
+              class="chip-brand-img" alt=""> MusicCore</button>
+          <button type="button" class="filter-chip" data-fav-comp="p"><img src="icons/paramax5.png"
+              class="chip-brand-img" alt=""> Paramax</button>
+          <button type="button" class="filter-chip" data-fav-comp="c"><img src="icons/california6.png"
+              class="chip-brand-img" alt=""> California</button>
+          <button type="button" class="filter-chip" data-fav-comp="v"><img src="icons/vietktv6.png"
+              class="chip-brand-img" alt=""> Việt KTV</button>
+          <button type="button" class="filter-chip" data-fav-comp="t"><img src="icons/vitekvtb6.png"
+              class="chip-brand-img" alt=""> Vitek</button>
+        </div>
+      </div>
+
+      <!-- Favorites Song List -->
+      <div class="song-list-wrapper view-card" id="favListContainer" role="list"></div>
+
+      <!-- Empty State for Favorites -->
+      <div class="empty-state" id="favEmptyState" style="display: none;">
+        <div class="empty-icon">🤍</div>
+        <h3 class="empty-title">Chưa có bài hát yêu thích nào</h3>
+        <p class="empty-desc">Khi tìm bài hát, bấm biểu tượng trái tim để lưu bài hát vào danh sách này.</p>
+        <button type="button" class="btn-sheet-primary" id="btnFavGoSearch">🔍 Tra cứu bài hát ngay</button>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACTIVITY 3: LỊCH SỬ TRA CỨU (SEPARATE ANDROID ACTIVITY SCREEN)
+         ====================================================================== -->
+    <section class="app-activity" id="activityHistory" style="display: none;" aria-label="Lịch sử tra cứu">
+      <div class="activity-header-card">
+        <div class="activity-title-row">
+          <div>
+            <h2 class="activity-title">🕒 Lịch sử Tra cứu</h2>
+            <p class="activity-sub">Các bài hát bạn đã mở xem chi tiết gần đây</p>
+          </div>
+          <button type="button" class="btn-act-action btn-act-danger" id="btnHistClearAll">🗑️ Xóa lịch sử</button>
+        </div>
+      </div>
+
+      <!-- History Song List -->
+      <div class="song-list-wrapper view-card" id="historyListContainer" role="list"></div>
+
+      <!-- Empty State for History -->
+      <div class="empty-state" id="historyEmptyState" style="display: none;">
+        <div class="empty-icon">🕒</div>
+        <h3 class="empty-title">Lịch sử tra cứu đang trống</h3>
+        <p class="empty-desc">Các bài hát bạn đã xem sẽ tự động được lưu lại ở đây để bạn dễ tìm lại.</p>
+        <button type="button" class="btn-sheet-primary" id="btnHistGoSearch">🔍 Khám phá bài hát</button>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACTIVITY 4: TIỆN ÍCH & CÀI ĐẶT (FULL SCREEN UTILITIES & SETTINGS)
+         ====================================================================== -->
+    <section class="app-activity" id="activityUtilities" style="display: none;" aria-label="Tiện ích & Cài đặt">
+      <div class="activity-header-card">
+        <h2 class="activity-title">⚙️ Tiện ích & Cài đặt</h2>
+        <p class="activity-sub">Thông tin ứng dụng, sao lưu dữ liệu và mẹo tìm kiếm</p>
+      </div>
+
+      <!-- In-App Auto-Update Notification & Sync Card -->
+      <div class="settings-card card-update-highlight">
+        <div class="settings-card-head">
+          <div class="update-icon-circle">
+            <span class="settings-card-icon">🚀</span>
+          </div>
+          <div>
+            <h3 class="settings-card-title">Cập nhật Danh mục Bài hát</h3>
+            <p class="settings-author-name" id="appVersionDisplay">Phiên bản hiện tại: v2.3.0</p>
+          </div>
+          <span class="badge badge-update-status" id="badgeUpdateStatus">Bản mới nhất</span>
+        </div>
+        <p class="settings-desc">
+          Tự động kiểm tra danh mục bài hát mới từ hệ thống máy chủ trực tuyến. Khi có Vol mới phát hành, ứng dụng sẽ
+          hiện thông báo để bạn cập nhật danh mục mới nhất.
+        </p>
+        <div class="backup-btns-row">
+          <button type="button" class="btn-sheet-primary" id="btnCheckAppUpdate">
+            🔄 Kiểm tra bản cập nhật
+          </button>
+          <button type="button" class="btn-sheet-secondary" id="btnOpenChangelog">
+            📜 Xem tính năng mới (Changelog)
+          </button>
+        </div>
+      </div>
+
+      <!-- Supported Karaoke Systems Showcase Card with Authentic Brand Logos -->
+      <div class="settings-card card-brand-showcase">
+        <div class="settings-card-head">
+          <img src="icons/hoangthulogo.jpg" alt="App Icon" class="settings-brand-app-icon">
+          <div>
+            <h3 class="settings-card-title">7 Hệ thống Đầu Karaoke Tích hợp</h3>
+            <p class="settings-author-name">Biểu trưng & Logo chính hãng các nhà sản xuất</p>
+          </div>
+        </div>
+        <p class="settings-desc">
+          Ứng dụng tổng hợp toàn bộ mã số bài hát từ các đầu đĩa & ổ cứng Karaoke phổ biến nhất tại thị trường Việt Nam:
+        </p>
+        <div class="brand-logo-grid">
+          <div class="brand-logo-card">
+            <div class="brand-logo-img-wrap"><img src="icons/arirang5.png" alt="Arirang" class="brand-grid-img"></div>
+            <div class="brand-grid-info">
+              <span class="brand-grid-name">Arirang (Maseco)</span>
+              <span class="brand-grid-vol">Vol 66 • 20,400+ bài (Vocal & Chorus)</span>
+            </div>
+          </div>
+          <div class="brand-logo-card">
+            <div class="brand-logo-img-wrap"><img src="icons/sonca6.png" alt="Acnos Soncamedia" class="brand-grid-img">
+            </div>
+            <div class="brand-grid-info">
+              <span class="brand-grid-name">Acnos Soncamedia</span>
+              <span class="brand-grid-vol">Vol 62 • 9,850+ bài (Đĩa KTV & MIDI)</span>
+            </div>
+          </div>
+          <div class="brand-logo-card">
+            <div class="brand-logo-img-wrap"><img src="icons/musiccore5.png" alt="MusicCore" class="brand-grid-img">
+            </div>
+            <div class="brand-grid-info">
+              <span class="brand-grid-name">MusicCore (Sóng Nhạc)</span>
+              <span class="brand-grid-vol">Vol 102 • 10,200+ bài</span>
+            </div>
+          </div>
+          <div class="brand-logo-card">
+            <div class="brand-logo-img-wrap"><img src="icons/paramax5.png" alt="Paramax" class="brand-grid-img"></div>
+            <div class="brand-grid-info">
+              <span class="brand-grid-name">Paramax</span>
+              <span class="brand-grid-vol">Vol 52 • 21,300+ bài (Việt & Quốc tế)</span>
+            </div>
+          </div>
+          <div class="brand-logo-card">
+            <div class="brand-logo-img-wrap"><img src="icons/california6.png" alt="California" class="brand-grid-img">
+            </div>
+            <div class="brand-grid-info">
+              <span class="brand-grid-name">California Electronics</span>
+              <span class="brand-grid-vol">6 số • 11,200+ bài</span>
+            </div>
+          </div>
+          <div class="brand-logo-card">
+            <div class="brand-logo-img-wrap"><img src="icons/vietktv6.png" alt="Việt KTV" class="brand-grid-img"></div>
+            <div class="brand-grid-info">
+              <span class="brand-grid-name">Việt KTV</span>
+              <span class="brand-grid-vol">6 số • 16,100+ bài</span>
+            </div>
+          </div>
+          <div class="brand-logo-card">
+            <div class="brand-logo-img-wrap"><img src="icons/vitekvtb6.png" alt="Vitek VTB" class="brand-grid-img">
+            </div>
+            <div class="brand-grid-info">
+              <span class="brand-grid-name">Vitek VTB</span>
+              <span class="brand-grid-vol">6 số • 9,600+ bài (Tiến Đạt VTB)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright & Info Card -->
+      <div class="settings-card">
+        <div class="settings-card-head">
+          <span class="settings-card-icon">👑</span>
+          <div>
+            <h3 class="settings-card-title">Bản quyền Web & App</h3>
+            <p class="settings-author-name">Trần Hoàng Thứ - HoangThuIT</p>
+          </div>
+        </div>
+        <p class="settings-desc">
+          Ứng dụng tra cứu mã số Karaoke Việt Nam tổng hợp hơn <strong>98,000+ bài hát</strong> từ 7 hệ thống karaoke
+          hàng đầu: Arirang 5 số (cập nhật Vol 66 có lời ca & tiếng bè), Acnos Soncamedia (Vol 58, 60, 62), MusicCore
+          Vol 102, Paramax Vol 52, California 6 số, Việt KTV và Vitek VTB.
+        </p>
+        <div class="settings-tags">
+          <span class="badge badge-vol">⚡ 100% Offline PWA</span>
+          <span class="badge badge-genre">📱 Android Native Look</span>
+          <span class="badge badge-lang">💻 Bản Desktop PC</span>
+          <span class="badge badge-vocal">🎤 Vocal & Chorus</span>
+        </div>
+      </div>
+
+      <!-- Backup & Restore Card -->
+      <div class="settings-card">
+        <h3 class="settings-card-title">💾 Sao lưu & Phục hồi bài tủ</h3>
+        <p class="settings-desc">Lưu danh sách bài hát yêu thích về máy để không bị mất khi đổi điện thoại hoặc xóa
+          trình duyệt.</p>
+
+        <div class="backup-btns-row">
+          <button type="button" class="btn-sheet-primary" id="btnUtilExport">📥 Tải file JSON</button>
+          <button type="button" class="btn-sheet-secondary" id="btnUtilCopy">📋 Sao chép mã</button>
+        </div>
+
+        <div class="import-section">
+          <input type="file" id="utilFileInput" accept=".json" style="display: none;">
+          <button type="button" class="btn-sheet-secondary" id="btnUtilSelectFile">📂 Chọn file JSON từ máy...</button>
+          <textarea id="utilTextInput" class="import-area" placeholder="Hoặc dán mã sao lưu JSON vào đây..."></textarea>
+          <button type="button" class="btn-sheet-primary" id="btnUtilApplyText">Phục hồi ngay</button>
+        </div>
+      </div>
+
+      <!-- Search Tips Card -->
+      <div class="settings-card">
+        <h3 class="settings-card-title">💡 Mẹo tìm kiếm viết tắt siêu tốc</h3>
+        <div class="tips-list">
+          <div class="tip-item">
+            <strong>1. Gõ chữ cái đầu tên bài (Viết tắt):</strong>
+            <ul>
+              <li><code>stth</code> ➔ Sầu Tím Thiệp Hồng</li>
+              <li><code>cdlv</code> ➔ Chia Đôi Lối Về</li>
+              <li><code>hbl</code> ➔ Hoa Bằng Lăng</li>
+              <li><code>dp</code> ➔ Duyên Phận</li>
+            </ul>
+          </div>
+          <div class="tip-item">
+            <strong>2. Gõ mã số trực tiếp:</strong>
+            <p>Nhập mã số <code>54630</code>, <code>51234</code> để tìm ngay bài hát.</p>
+          </div>
+          <div class="tip-item">
+            <strong>3. Phím tắt trên máy tính (PC):</strong>
+            <p>Bấm phím <code>/</code> để vào ô tìm kiếm nhanh, bấm <code>Esc</code> để đóng hộp thoại.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PWA Install Guide Card -->
+      <div class="settings-card">
+        <h3 class="settings-card-title">📱 Cài đặt vào điện thoại (App PWA)</h3>
+        <p class="settings-desc">
+          Ứng dụng có thể cài đặt trực tiếp vào màn hình chính điện thoại, mở lên như một App thực thụ mà không có thanh
+          địa chỉ trình duyệt.
+        </p>
+        <button type="button" class="btn-sheet-primary" id="btnUtilInstallPwa">📲 Thêm vào màn hình chính</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Android Bottom Navigation Bar (Visible on Mobile) -->
+  <nav class="bottom-nav-bar" aria-label="Điều hướng chính Android">
+    <button type="button" class="bottom-nav-item active" data-activity="search" id="navHome">
+      <span class="nav-icon">🎵</span>
+      <span class="nav-label">Tra cứu</span>
+    </button>
+    <button type="button" class="bottom-nav-item" data-activity="fav" id="navFav">
+      <span class="nav-icon">❤️</span>
+      <span class="nav-label">Yêu thích</span>
+      <span class="nav-badge" id="bottomFavBadge" style="display: none;">0</span>
+    </button>
+    <button type="button" class="bottom-nav-item" data-activity="history" id="navHistory">
+      <span class="nav-icon">🕒</span>
+      <span class="nav-label">Lịch sử</span>
+    </button>
+    <button type="button" class="bottom-nav-item" data-activity="utilities" id="navMenu">
+      <span class="nav-icon">⚙️</span>
+      <span class="nav-label">Tiện ích</span>
+    </button>
+  </nav>
+
+  <!-- ======================================================================
+       MODAL: AUTHOR / SINGER FILTER PICKER
+       ====================================================================== -->
+  <div class="modal-overlay" id="authorModal" aria-hidden="true">
+    <div class="modal-sheet">
+      <div class="sheet-drag-handle"></div>
+
+      <div class="sheet-header">
+        <h3 class="sheet-title">👤 Chọn Tác giả / Ca sĩ</h3>
+        <button type="button" class="sheet-close-btn" id="btnCloseAuthorModal">✕</button>
+      </div>
+
+      <div class="sheet-body">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+            stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="authorSearchInput" class="search-input" placeholder="Nhập tên nhạc sĩ hoặc ca sĩ...">
+        </div>
+
+        <div class="author-section-title">Nghệ sĩ tiêu biểu:</div>
+        <div class="author-popular-chips" id="popularAuthorsContainer">
+          <!-- Filled by JavaScript -->
+        </div>
+
+        <div class="author-section-title">Danh sách tác giả trong hãng:</div>
+        <div class="author-list-container" id="authorListContainer">
+          <!-- Filtered items -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL: SONG DETAIL BOTTOM SHEET
+       ====================================================================== -->
+  <div class="modal-overlay" id="songDetailModal" aria-hidden="true">
+    <div class="modal-sheet">
+      <div class="sheet-drag-handle"></div>
+
+      <div class="sheet-header">
+        <div class="sheet-company-pill" id="modalCompanyTag">
+          <img src="icons/arirang5.png" alt="Arirang" class="modal-company-logo" id="modalCompanyLogo">
+          <span id="modalCompanyName">Arirang 5 số</span>
+        </div>
+        <button type="button" class="sheet-close-btn" id="btnCloseDetailModal" title="Đóng">✕</button>
+      </div>
+
+      <div class="sheet-body">
+        <!-- Giant Code Box -->
+        <div class="code-hero-box">
+          <div class="code-label">MÃ SỐ BÀI HÁT</div>
+          <div class="code-number" id="modalSongCode">54630</div>
+          <button type="button" class="btn-sheet-copy" id="btnCopyModalCode">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path
+                d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+            </svg>
+            <span id="btnCopyModalCodeText">Sao chép mã</span>
+          </button>
+        </div>
+
+        <!-- Song Metadata -->
+        <div class="song-meta-box">
+          <h2 class="meta-title" id="modalSongTitle">Tên bài hát</h2>
+          <div class="meta-sub">
+            <span class="meta-author-text" id="modalSongAuthor">Nhạc sĩ</span>
+            <button type="button" class="btn-author-search" id="btnFilterByAuthor">🔍 Bài cùng tác giả</button>
+          </div>
+          <div class="meta-badges">
+            <span class="badge" id="modalVolBadge">Vol 40</span>
+            <span class="badge" id="modalGenreBadge">Nhạc trẻ</span>
+            <span class="badge" id="modalLangBadge">Tiếng Việt</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons Row (Direct YouTube Karaoke search) -->
+        <div class="sheet-actions-row">
+          <button type="button" class="sheet-btn btn-yt" id="btnSingYoutubeModal">
+            <span>▶️</span> Hát YouTube
+          </button>
+          <button type="button" class="sheet-btn btn-fav" id="btnToggleFavModal">
+            <span id="modalFavIcon">🤍</span> <span id="modalFavText">Yêu thích</span>
+          </button>
+          <button type="button" class="sheet-btn btn-google" id="btnGoogleLyricsModal">
+            <span>🌐</span> Tìm trên Google
+          </button>
+        </div>
+
+        <!-- Lyrics Section -->
+        <div class="lyrics-card">
+          <div class="lyrics-card-head">
+            <span class="lyrics-card-title">Lời bài hát</span>
+            <div class="font-resizer" id="lyricsFontResizer" style="display: none;">
+              <button type="button" class="btn-resizer" id="btnFontDec">A-</button>
+              <button type="button" class="btn-resizer" id="btnFontInc">A+</button>
+            </div>
+          </div>
+
+          <div class="lyrics-intro-box">
+            <div class="intro-label">Lời mở đầu:</div>
+            <div class="intro-text" id="modalIntroText">...</div>
+          </div>
+
+          <!-- Full Lyrics Expander -->
+          <div id="modalFullLyricsContainer" class="full-lyrics-container">
+            <button type="button" class="btn-full-lyrics" id="btnLoadFullLyrics">
+              📖 Xem toàn bộ lời bài hát (Đầy đủ)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Local SweetAlert2 (100% Offline) -->
+  <script src="sweetalert2.all.min.js"></script>
+
+  <!-- Default data scripts for instant zero-CORS launch -->
+  <script src="data/arirang.js"></script>
+  <script src="data/acnos.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "Mã số Karaoke Vietnam - Tra cứu Offline",
+  "short_name": "Karaoke VN",
+  "description": "Tra cứu mã số bài hát Karaoke Arirang 5 số, MusicCore, California 6 số, Việt KTV siêu tốc không cần mạng.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0B0F19",
+  "theme_color": "#0B0F19",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

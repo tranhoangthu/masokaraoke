@@ -1,0 +1,80 @@
+{
+  "version": "2.3.0",
+  "buildDate": "2026-09-26",
+  "title": "Bản cập nhật Biểu trưng Thương hiệu & Icon chính hãng v2.3.0",
+  "subtitle": "Tích hợp toàn diện Logo 7 Hãng Karaoke & Bộ Icon Android Native",
+  "changelog": [
+    "Tích hợp biểu trưng logo chính hãng sắc nét cho cả 7 hệ thống: Arirang, Acnos Sonca, MusicCore, Paramax, California, Việt KTV, Vitek VTB ngay trên thanh chọn tab và hộp thoại chi tiết bài hát",
+    "Áp dụng biểu tượng launcher gốc của ứng dụng (ic_launcher_list.png) và logo banner chính thức",
+    "Gắn icon thao tác nhanh: Xem toàn bộ lời bài hát (menu_lyric), Yêu thích (menu_favorite), Quay lại menu (ic_back_to_menu)",
+    "Bổ sung khu vực '7 Hệ thống Đầu Karaoke Tích hợp' giới thiệu chi tiết từng hãng trong tab Tiện ích",
+    "Tối ưu hiển thị logo trên cả 2 giao diện Sáng (Light Mode) và Tối (Dark Mode) với hiệu ứng bóng mờ cao cấp"
+  ],
+  "datasets": {
+    "arirang": { "vol": "Vol 66", "vocal_chorus": true, "count": 20333 },
+    "acnos": { "vol": "Vol 62", "count": 9856 },
+    "musiccore": { "vol": "Vol 102", "count": 9679 },
+    "california": { "vol": "Vol 20", "count": 12714 },
+    "vietktv": { "vol": "Mới nhất", "count": 15229 },
+    "paramax": { "vol": "Vol 52", "count": 13114 },
+    "vitek": { "vol": "Vol 3.25", "count": 8068 }
+  },
+  "events": {
+    "national_day": {
+      "id": "national_day",
+      "name": "Chào Mừng Quốc Khánh 2/9",
+      "icon": "⭐",
+      "banner": "Chào Mừng Đại Lễ Quốc Khánh 2/9 Nước CHXHCN Việt Nam",
+      "tagline": "Tự hào giai điệu quê hương - Đất nước trọn niềm vui",
+      "badge": "2/9 Rực Rỡ",
+      "highlightKeyword": "Việt Nam",
+      "themeColor": "#e11d48",
+      "activeMonths": [9],
+      "activeDays": [1, 2, 3, 4, 5]
+    },
+    "autumn": {
+      "id": "autumn",
+      "name": "Mùa Thu Vàng & Trung Thu",
+      "icon": "🍂",
+      "banner": "Mùa Thu Vàng & Đón Tết Trung Thu",
+      "tagline": "Giai điệu lãng mạn, êm dịu cùng những bản tình ca mùa thu",
+      "badge": "Mùa Thu",
+      "highlightKeyword": "Thu",
+      "themeColor": "#d97706",
+      "activeMonths": [8, 9, 10]
+    },
+    "christmas": {
+      "id": "christmas",
+      "name": "Mùa Đông & Giáng Sinh",
+      "icon": "🎄",
+      "banner": "Giáng Sinh An Lành & Năm Mới Rộn Ràng",
+      "tagline": "Merry Christmas & Happy New Year!",
+      "badge": "Noel",
+      "highlightKeyword": "Noel",
+      "themeColor": "#059669",
+      "activeMonths": [12]
+    },
+    "tet": {
+      "id": "tet",
+      "name": "Tết Nguyên Đán & Mùa Xuân",
+      "icon": "🌸",
+      "banner": "Mừng Xuân Giáp Thân - Vạn Sự Như Ý",
+      "tagline": "Rộn ràng câu hát đón xuân sang, sum vầy bên gia đình",
+      "badge": "Tết Đến",
+      "highlightKeyword": "Xuân",
+      "themeColor": "#dc2626",
+      "activeMonths": [1, 2]
+    },
+    "summer": {
+      "id": "summer",
+      "name": "Mùa Hè Năng Động",
+      "icon": "☀️",
+      "banner": "Mùa Hè Sôi Động - Nắng Vàng Biển Xanh",
+      "tagline": "Giai điệu tươi vui, sảng khoái ngày hè",
+      "badge": "Mùa Hè",
+      "highlightKeyword": "Hè",
+      "themeColor": "#0284c7",
+      "activeMonths": [5, 6, 7]
+    }
+  }
+}
