@@ -1,23 +1,50 @@
 {
-  "version": "2.3.0",
-  "buildDate": "2026-09-26",
-  "title": "Bản cập nhật Biểu trưng Thương hiệu & Icon chính hãng v2.3.0",
-  "subtitle": "Tích hợp toàn diện Logo 7 Hãng Karaoke & Bộ Icon Android Native",
+  "version": "2.4.0",
+  "buildDate": "2026-09-27",
+  "title": "Bản phát hành Đông Hải KTV Vol 82B & Vol 83B v2.4.0",
+  "subtitle": "Tích hợp toàn diện 10,976 bài hát Đông Hải KTV & Tự động đồng bộ Client",
   "changelog": [
-    "Tích hợp biểu trưng logo chính hãng sắc nét cho cả 7 hệ thống: Arirang, Acnos Sonca, MusicCore, Paramax, California, Việt KTV, Vitek VTB ngay trên thanh chọn tab và hộp thoại chi tiết bài hát",
-    "Áp dụng biểu tượng launcher gốc của ứng dụng (ic_launcher_list.png) và logo banner chính thức",
-    "Gắn icon thao tác nhanh: Xem toàn bộ lời bài hát (menu_lyric), Yêu thích (menu_favorite), Quay lại menu (ic_back_to_menu)",
-    "Bổ sung khu vực '7 Hệ thống Đầu Karaoke Tích hợp' giới thiệu chi tiết từng hãng trong tab Tiện ích",
-    "Tối ưu hiển thị logo trên cả 2 giao diện Sáng (Light Mode) và Tối (Dark Mode) với hiệu ứng bóng mờ cao cấp"
+    "Tích hợp trọn bộ 10,976 bài hát Đông Hải KTV từ Vol 82B và Vol 83B mới nhất, chuẩn xác mã 6 số và không lệch tên bài hát",
+    "Cập nhật 151 bài hát mới phát hành độc quyền trên Vol 83B (Anh Cứ Đi Đi, Bánh Trôi Nước, Bố Trẻ Con,...)",
+    "Hỗ trợ phân loại 1,659 bài hát có lời ca sĩ (Vocal 🎤), bộ lọc ca sĩ và ngôn ngữ (Việt, Hoa, Anh)",
+    "Hệ thống tự động phát hiện file mới và cấu hình trong thư mục, gửi thông báo cập nhật 1 chạm tới client",
+    "Xuất bản danh mục Excel 'LIST Nhạc Đông Hải.xlsx' chia 6 sheet chuyên nghiệp và giao diện Web ocean-cyan tuyệt đẹp"
   ],
   "datasets": {
-    "arirang": { "vol": "Vol 66", "vocal_chorus": true, "count": 20333 },
-    "acnos": { "vol": "Vol 62", "count": 9856 },
-    "musiccore": { "vol": "Vol 102", "count": 9679 },
-    "california": { "vol": "Vol 20", "count": 12714 },
-    "vietktv": { "vol": "Mới nhất", "count": 15229 },
-    "paramax": { "vol": "Vol 52", "count": 13114 },
-    "vitek": { "vol": "Vol 3.25", "count": 8068 }
+    "arirang": {
+      "vol": "Vol 66",
+      "vocal_chorus": true,
+      "count": 20333
+    },
+    "donghai": {
+      "vol": "Vol 83B",
+      "vocal": 863,
+      "count": 10976
+    },
+    "acnos": {
+      "vol": "Vol 62",
+      "count": 9856
+    },
+    "musiccore": {
+      "vol": "Vol 102",
+      "count": 9679
+    },
+    "california": {
+      "vol": "Vol 20",
+      "count": 12714
+    },
+    "vietktv": {
+      "vol": "Mới nhất",
+      "count": 15229
+    },
+    "paramax": {
+      "vol": "Vol 52",
+      "count": 13114
+    },
+    "vitek": {
+      "vol": "Vol 3.25",
+      "count": 8068
+    }
   },
   "events": {
     "national_day": {
@@ -29,8 +56,16 @@
       "badge": "2/9 Rực Rỡ",
       "highlightKeyword": "Việt Nam",
       "themeColor": "#e11d48",
-      "activeMonths": [9],
-      "activeDays": [1, 2, 3, 4, 5]
+      "activeMonths": [
+        9
+      ],
+      "activeDays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     },
     "autumn": {
       "id": "autumn",
@@ -41,7 +76,11 @@
       "badge": "Mùa Thu",
       "highlightKeyword": "Thu",
       "themeColor": "#d97706",
-      "activeMonths": [8, 9, 10]
+      "activeMonths": [
+        8,
+        9,
+        10
+      ]
     },
     "christmas": {
       "id": "christmas",
@@ -52,7 +91,9 @@
       "badge": "Noel",
       "highlightKeyword": "Noel",
       "themeColor": "#059669",
-      "activeMonths": [12]
+      "activeMonths": [
+        12
+      ]
     },
     "tet": {
       "id": "tet",
@@ -63,7 +104,10 @@
       "badge": "Tết Đến",
       "highlightKeyword": "Xuân",
       "themeColor": "#dc2626",
-      "activeMonths": [1, 2]
+      "activeMonths": [
+        1,
+        2
+      ]
     },
     "summer": {
       "id": "summer",
@@ -74,7 +118,11 @@
       "badge": "Mùa Hè",
       "highlightKeyword": "Hè",
       "themeColor": "#0284c7",
-      "activeMonths": [5, 6, 7]
+      "activeMonths": [
+        5,
+        6,
+        7
+      ]
     }
   }
 }

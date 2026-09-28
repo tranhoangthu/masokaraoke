@@ -16,10 +16,11 @@
     p: { key: 'p', name: 'Paramax 5 số (Vol 52)', short: 'Paramax', varName: 'KARAOKE_DATA_P', file: 'paramax', logo: 'icons/paramax5.png' },
     c: { key: 'c', name: 'California 6 số', short: 'California', varName: 'KARAOKE_DATA_C', file: 'california', logo: 'icons/california6.png' },
     v: { key: 'v', name: 'Việt KTV 6 số', short: 'Việt KTV', varName: 'KARAOKE_DATA_V', file: 'vietktv', logo: 'icons/vietktv6.png' },
-    t: { key: 't', name: 'Vitek VTB', short: 'Vitek VTB', varName: 'KARAOKE_DATA_T', file: 'vitek', logo: 'icons/vitekvtb6.png' }
+    t: { key: 't', name: 'Vitek VTB', short: 'Vitek VTB', varName: 'KARAOKE_DATA_T', file: 'vitek', logo: 'icons/vitekvtb6.png' },
+    dh: { key: 'dh', name: 'Đông Hải KTV (Vol 83B)', short: 'Đông Hải', varName: 'KARAOKE_DATA_DH', file: 'donghai', logo: 'icons/DONGHAI.jpg' }
   };
 
-  const CURRENT_APP_VERSION = '2.3.0';
+  const CURRENT_APP_VERSION = '2.4.0';
 
   const GENRE_NAMES = {
     0: 'Khác',
@@ -1919,10 +1920,10 @@ ${escapeHtml(lyrics)}
         return;
       }
 
-      // 1-7 switches company
-      const compKeys = ['a', 'acnos', 'm', 'p', 'c', 'v', 't'];
+      // 1-8 switches company
+      const compKeys = ['a', 'acnos', 'm', 'p', 'c', 'v', 't', 'dh'];
       const num = parseInt(e.key, 10);
-      if (num >= 1 && num <= 7) {
+      if (num >= 1 && num <= 8) {
         switchCompany(compKeys[num - 1]);
       }
     });
@@ -2077,18 +2078,18 @@ ${escapeHtml(lyrics)}
 
   function showChangelogModal() {
     Swal.fire({
-      title: '📜 Nhật ký Phiên bản v2.3.0',
+      title: '📜 Nhật ký Phiên bản v2.4.0',
       html: `
         <div style="text-align: left; font-size: 0.88rem; line-height: 1.6;">
-          <div style="background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.35); padding: 8px 12px; border-radius: 8px; margin-bottom: 10px;">
-            <strong style="color: #4ade80;">Bản phát hành v2.3.0 - 26/09/2026</strong>
+          <div style="background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.4); padding: 8px 12px; border-radius: 8px; margin-bottom: 10px;">
+            <strong style="color: #06b6d4;">Bản phát hành v2.4.0 - 27/09/2026</strong>
           </div>
           <ul style="padding-left: 20px; color: var(--text-secondary); margin-bottom: 12px;">
-            <li><strong>Logo 7 Hãng chính thức:</strong> Tích hợp logo thương hiệu sắc nét của Arirang, Acnos Sonca, MusicCore, Paramax, California, Việt KTV, Vitek VTB.</li>
-            <li><strong>Biểu tượng ứng dụng:</strong> Áp dụng launcher icon gốc (cuốn sổ karaoke native) và favicon mới.</li>
-            <li><strong>Acnos Soncamedia:</strong> Tích hợp đầy đủ 9,856 bài hát từ Vol 58, 60, 62 gồm tân nhạc, cổ nhạc, remix, tiếng Anh và mã HDMI 6 số.</li>
-            <li><strong>Arirang Vol 66:</strong> Bổ sung phân loại bài hát có lời ca (Vocal 🎤) và tiếng bè (Chorus 💋) với bộ lọc chuyên dụng.</li>
-            <li><strong>Cập nhật tự động (In-App Update):</strong> Tự động kiểm tra và đồng bộ bài hát mới từ hệ thống máy chủ.</li>
+            <li><strong>Tích hợp Đông Hải KTV:</strong> Bổ sung trọn bộ 10,976 bài hát từ Vol 82B và Vol 83B mới nhất với mã 6 số chuẩn xác 100%.</li>
+            <li><strong>Bài mới Vol 83B:</strong> Cập nhật 151 bài hát mới phát hành (Anh Cứ Đi Đi, Bánh Trôi Nước, Bố Trẻ Con, Bến Sông Chờ Remix,...).</li>
+            <li><strong>Phân loại Ca sĩ & Vocal:</strong> Tách biệt 1,659 bài hát có lời ca sĩ (Vocal 🎤), bộ lọc ca sĩ và bài hát theo ngôn ngữ.</li>
+            <li><strong>Tự động Đồng bộ (Auto-Update):</strong> Khi có file mới hoặc cấu hình thay đổi trong thư mục, hệ thống tự động phát hiện và nhắc người dùng cập nhật ngay tức thì.</li>
+            <li><strong>Xuất Excel hoàn chỉnh:</strong> Đầy đủ 6 sheet phân loại chuyên nghiệp, không trùng lặp và không lệch tên bài hát.</li>
           </ul>
           <div style="font-size: 0.78rem; color: var(--text-muted); text-align: center; border-top: 1px solid var(--border-subtle); padding-top: 8px;">
             Bản quyền thuộc Trần Hoàng Thứ - HoangThuIT

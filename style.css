@@ -82,6 +82,7 @@ body[data-company="c"] { --brand-primary: #9333ea; --brand-gradient: linear-grad
 body[data-company="v"] { --brand-primary: #059669; --brand-gradient: linear-gradient(135deg, #059669, #34d399); --brand-glow: rgba(5, 150, 105, 0.3); --brand-light: rgba(5, 150, 105, 0.1); }
 body[data-company="t"] { --brand-primary: #0284c7; --brand-gradient: linear-gradient(135deg, #0284c7, #38bdf8); --brand-glow: rgba(2, 132, 199, 0.3); --brand-light: rgba(2, 132, 199, 0.1); }
 body[data-company="acnos"] { --brand-primary: #8b5cf6; --brand-gradient: linear-gradient(135deg, #8b5cf6, #ec4899); --brand-glow: rgba(139, 92, 246, 0.35); --brand-light: rgba(139, 92, 246, 0.12); }
+body[data-company="dh"] { --brand-primary: #06b6d4; --brand-gradient: linear-gradient(135deg, #0891b2, #06b6d4); --brand-glow: rgba(6, 182, 212, 0.35); --brand-light: rgba(6, 182, 212, 0.12); }
 
 /* Reset */
 *, *::before, *::after {
