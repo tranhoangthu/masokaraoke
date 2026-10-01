@@ -1,14 +1,13 @@
 {
-  "version": "2.4.0",
-  "buildDate": "2026-09-27",
-  "title": "Bản phát hành Đông Hải KTV Vol 82B & Vol 83B v2.4.0",
-  "subtitle": "Tích hợp toàn diện 10,976 bài hát Đông Hải KTV & Tự động đồng bộ Client",
+  "version": "2.4.1",
+  "buildDate": "2026-10-01",
+  "title": "Bản cập nhật Acnos Vol 62 đầy đủ & Làm giàu dữ liệu Đông Hải KTV",
+  "subtitle": "Bổ sung 17,806 bài Acnos Vol 62 và tích hợp Nhạc, Lời, Lời đầu cho Đông Hải Vol 82B & 83B",
   "changelog": [
-    "Tích hợp trọn bộ 10,976 bài hát Đông Hải KTV từ Vol 82B và Vol 83B mới nhất, chuẩn xác mã 6 số và không lệch tên bài hát",
-    "Cập nhật 151 bài hát mới phát hành độc quyền trên Vol 83B (Anh Cứ Đi Đi, Bánh Trôi Nước, Bố Trẻ Con,...)",
-    "Hỗ trợ phân loại 1,659 bài hát có lời ca sĩ (Vocal 🎤), bộ lọc ca sĩ và ngôn ngữ (Việt, Hoa, Anh)",
-    "Hệ thống tự động phát hiện file mới và cấu hình trong thư mục, gửi thông báo cập nhật 1 chạm tới client",
-    "Xuất bản danh mục Excel 'LIST Nhạc Đông Hải.xlsx' chia 6 sheet chuyên nghiệp và giao diện Web ocean-cyan tuyệt đẹp"
+    "Bổ sung danh mục bài hát đầy đủ Acnos Soncamedia Vol 62 với 17,806 bài hát tiếng Việt & tiếng Anh, hỗ trợ tìm kiếm cả mã 5 số và 6 số HDMI",
+    "Đối chiếu và làm giàu thông tin Nhạc sĩ sáng tác, Tác giả lời và Lời đầu mở đầu bài hát cho KTV Vol 82B và hanco Vol 83B Đông Hải",
+    "Tối ưu hiển thị và xuất bản danh mục Excel LIST Nhạc Đông Hải có đầy đủ tác giả và lời đầu",
+    "Hỗ trợ bộ dữ liệu toàn hệ thống vượt mốc 107,900 bài hát karaoke"
   ],
   "datasets": {
     "arirang": {
@@ -23,7 +22,7 @@
     },
     "acnos": {
       "vol": "Vol 62",
-      "count": 9856
+      "count": 17806
     },
     "musiccore": {
       "vol": "Vol 102",
@@ -124,5 +123,6 @@
         7
       ]
     }
-  }
+  },
+  "totalSongs": 107919
 }

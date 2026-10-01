@@ -20,7 +20,7 @@
     dh: { key: 'dh', name: 'Đông Hải KTV (Vol 83B)', short: 'Đông Hải', varName: 'KARAOKE_DATA_DH', file: 'donghai', logo: 'icons/DONGHAI.jpg' }
   };
 
-  const CURRENT_APP_VERSION = '2.4.0';
+  const CURRENT_APP_VERSION = '2.4.1';
 
   const GENRE_NAMES = {
     0: 'Khác',
@@ -523,7 +523,7 @@
     if (queryNorm) {
       if (isNumberQuery) {
         results = results.filter(item => {
-          return item.masoStr.startsWith(query) || item.masoStr.includes(query);
+          return item.masoStr.startsWith(query) || item.masoStr.includes(query) || (item.maso6 && (item.maso6.startsWith(query) || item.maso6.includes(query)));
         });
       } else {
         results = results.filter(item => {
@@ -536,8 +536,8 @@
 
         // Relevance sort
         results.sort((a, b) => {
-          const aCode = a.masoStr.startsWith(query) ? 1 : 0;
-          const bCode = b.masoStr.startsWith(query) ? 1 : 0;
+          const aCode = (a.masoStr.startsWith(query) || (a.maso6 && a.maso6.startsWith(query))) ? 1 : 0;
+          const bCode = (b.masoStr.startsWith(query) || (b.maso6 && b.maso6.startsWith(query))) ? 1 : 0;
           if (aCode !== bCode) return bCode - aCode;
 
           const aAcrExact = a.acr === queryNorm ? 1 : 0;

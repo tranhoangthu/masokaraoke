@@ -10,6 +10,7 @@ Thư mục này lưu trữ toàn bộ các file nguồn, file cài đặt APK, b
 - `tKaraokeList+🎤+Mã+số+Karaoke+_2.4_APKPure.apk`: APK danh mục bài hát Arirang / Paramax.
 
 ### 2. Danh mục bài hát Excel (.xlsx)
+- `List ACNOS (2017).xlsx`: Danh mục bài hát đầy đủ Acnos Soncamedia Vol 62 (17,806 bài hát tiếng Việt & tiếng Anh).
 - `Danh mục bài hát MusicCore (cập nhật tới vol 102).xlsx`
 - `Danh mục bài hát Paramax (cập nhật tới vol 52).xlsx`
 - `Danh mục bài hát tiếng Anh (Paramax) (cập nhật tới vol 52).xlsx`
@@ -23,6 +24,8 @@ Thư mục này lưu trữ toàn bộ các file nguồn, file cài đặt APK, b
 
 ### 5. Script Python xử lý & đóng gói dữ liệu
 - `build_all_data.py`: Script tổng hợp toàn bộ bài hát từ APK, Excel và xuất ra JSON/JS.
-- `build_acnos_data.py`: Script phân tích PDF Acnos và sinh `data/acnos.js`.
+- `build_acnos_data.py`: Script phân tích danh mục Acnos Vol 62 và sinh `data/acnos.js`, `data/acnos.json` (17,806 bài).
+- `enrich_donghai.py`: Script trích xuất và đối chiếu Nhạc, Lời, Lời đầu cho Đông Hải KTV Vol 82B & 83B.
+- `build_donghai_data.py`: Script tổng hợp và xuất dữ liệu Đông Hải KTV.
 - `build_arirang_vocal_chorus.py`: Script gắn nhãn Vocal & Chorus cho Arirang Vol 66.
 - `export_data.py`: Script trích xuất SQLite từ APK.

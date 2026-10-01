@@ -60,6 +60,9 @@ def build_donghai_dataset(excel_82_path, excel_83_path, megidx_82_path, megidx_8
         ex_row = rows82[i]
         code = ex_row[1]
         ex_title = str(ex_row[2]).strip()
+        nhac_val = str(ex_row[3] or '').strip() if len(ex_row) > 3 else ''
+        loi_val = str(ex_row[4] or '').strip() if len(ex_row) > 4 else ''
+        intro_val = str(ex_row[5] or '').strip() if len(ex_row) > 5 else ''
 
         rec = r82[i]
         raw_title_bytes = rec[0]
@@ -107,6 +110,9 @@ def build_donghai_dataset(excel_82_path, excel_83_path, megidx_82_path, megidx_8
             'title': title,
             'orig_title': orig_title,
             'singer': singer,
+            'nhac': nhac_val,
+            'loi': loi_val,
+            'intro': intro_val,
             'note': '',
             'lang_id': lang_id,
             'lang_str': lang_str,
@@ -124,6 +130,9 @@ def build_donghai_dataset(excel_82_path, excel_83_path, megidx_82_path, megidx_8
         ex_row = rows83[i]
         code = ex_row[1]
         ex_title = str(ex_row[2]).strip()
+        nhac_val = str(ex_row[3] or '').strip() if len(ex_row) > 3 else ''
+        loi_val = str(ex_row[4] or '').strip() if len(ex_row) > 4 else ''
+        intro_val = str(ex_row[5] or '').strip() if len(ex_row) > 5 else ''
 
         rec = r83[i]
         raw_title_bytes = rec[0]
@@ -181,6 +190,12 @@ def build_donghai_dataset(excel_82_path, excel_83_path, megidx_82_path, megidx_8
             
             if singer:
                 item['singer'] = singer
+            if nhac_val:
+                item['nhac'] = nhac_val
+            if loi_val:
+                item['loi'] = loi_val
+            if intro_val:
+                item['intro'] = intro_val
             if offset_hex:
                 item['hex_offset'] = offset_hex
                 item['pop_file'] = f"{offset_hex.lower()}.pop"
@@ -191,6 +206,9 @@ def build_donghai_dataset(excel_82_path, excel_83_path, megidx_82_path, megidx_8
                 'title': title,
                 'orig_title': orig_title,
                 'singer': singer,
+                'nhac': nhac_val,
+                'loi': loi_val,
+                'intro': intro_val,
                 'note': '[Bài mới Vol 83B]',
                 'lang_id': lang_id,
                 'lang_str': lang_str,
@@ -221,6 +239,8 @@ def build_donghai_dataset(excel_82_path, excel_83_path, megidx_82_path, megidx_8
     print(f"  - Nhạc Tiếng Việt (5xxxx, 6xxxx): {sum(1 for s in sorted_songs if s['lang_id'] == 0):,} bài")
     print(f"  - Nhạc Tiếng Trung (1xxxx): {sum(1 for s in sorted_songs if s['lang_id'] == 2):,} bài")
     print(f"  - Nhạc Tiếng Anh (3xxxx): {sum(1 for s in sorted_songs if s['lang_id'] == 3):,} bài")
+    print(f"  - Số bài có thông tin Tác giả / Nhạc sĩ: {sum(1 for s in sorted_songs if s['nhac']):,} bài")
+    print(f"  - Số bài có câu mở đầu (Lời đầu): {sum(1 for s in sorted_songs if s['intro']):,} bài")
     print(f"  - Số bài có thông tin Nghệ sĩ/Ca sĩ: {sum(1 for s in sorted_songs if s['singer']):,} bài")
 
     return s82, s83, sorted_songs
@@ -245,7 +265,6 @@ def export_to_excel(songs, output_path):
     )
     align_center = Alignment(horizontal='center', vertical='center')
     align_left = Alignment(horizontal='left', vertical='center')
-    align_right = Alignment(horizontal='right', vertical='center')
 
     headers = [
         ("STT", 8, align_center),
@@ -253,7 +272,10 @@ def export_to_excel(songs, output_path):
         ("Tên bài hát", 36, align_left),
         ("Tên gốc (MEGMID)", 36, align_left),
         ("Ca sĩ / Nghệ sĩ", 25, align_left),
-        ("Ghi chú / Tác giả", 28, align_left),
+        ("Tác giả / Nhạc sĩ", 28, align_left),
+        ("Tác giả lời", 28, align_left),
+        ("Lời đầu bài hát", 45, align_left),
+        ("Ghi chú", 25, align_left),
         ("Ngôn ngữ / Phân loại", 20, align_center),
         ("Có lời ca sĩ (Vocal)", 18, align_center),
         ("Vol phát hành", 18, align_center),
@@ -282,6 +304,9 @@ def export_to_excel(songs, output_path):
                 s['title'],
                 s['orig_title'],
                 s['singer'],
+                s['nhac'],
+                s['loi'],
+                s['intro'],
                 s['note'],
                 s['lang_str'],
                 vocal_label,
@@ -300,7 +325,7 @@ def export_to_excel(songs, output_path):
                     cell.font = font_data
                 cell.alignment = headers[col_idx-1][2]
                 cell.border = border_thin
-                if is_new and col_idx in [2, 3, 9]:
+                if is_new and col_idx in [2, 3, 12]:
                     cell.fill = fill_new_badge
                 elif not is_even:
                     cell.fill = fill_zebra
@@ -393,18 +418,31 @@ def export_json_and_js(songs, json_path, js_path):
     rows = []
     for s in songs:
         intro_parts = []
+        if s['intro']:
+            intro_parts.append(s['intro'])
         if s['note']:
             intro_parts.append(s['note'])
         if s['is_vocal']:
             intro_parts.append("Có lời ca sĩ")
         intro_str = " - ".join(intro_parts)
 
+        # Author logic: composer + singer if vocal
+        author_parts = []
+        if s['nhac']:
+            author_parts.append(s['nhac'])
+        if s['singer']:
+            if s['nhac']:
+                author_parts.append(f"(CS: {s['singer']})")
+            else:
+                author_parts.append(s['singer'])
+        author_str = " ".join(author_parts) if author_parts else ''
+
         row = [
             s['stt'],
             s['code'],
             s['title'],
             intro_str,
-            s['singer'],
+            author_str,
             s['lang_id'],
             s['genre'],
             s['vol_num'],
@@ -434,9 +472,11 @@ def update_version_json(version_path, count, vocal_count):
             "vocal": vocal_count,
             "count": count
         }
+        total_songs = sum(d.get('count', 0) for d in vdata.get('datasets', {}).values())
+        vdata['totalSongs'] = total_songs
         with open(version_path, 'w', encoding='utf-8') as f:
             json.dump(vdata, f, ensure_ascii=False, indent=2)
-        print(f"\nĐã cập nhật version.json: donghai count={count:,}, vocal={vocal_count:,}")
+        print(f"\nĐã cập nhật version.json: donghai count={count:,}, vocal={vocal_count:,}, tổng={total_songs:,}")
 
 def main():
     base_dir = os.path.abspath(os.path.join(current_dir, '..'))

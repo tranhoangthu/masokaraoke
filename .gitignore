@@ -17,3 +17,11 @@ Thumbs.db
 .vscode/
 .idea/
 [0-9a-f-]*.jpg
+
+# Temporary / scraper tools
+SoncaTokenDownloader*
+deepseek_python_*
+README_SoncaTokenDownloader.txt
+sc_*.xls
+midi-*
+images.png
