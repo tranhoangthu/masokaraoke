@@ -1,0 +1,31 @@
+# OS & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+Thumbs.db
+
+# Archives & Large binaries not needed for web hosting
+*.7z
+*.zip
+*.apk
+*.xapk
+*.iso
+*.bin
+
+# Local environment / IDE
+.vscode/
+.idea/
+[0-9a-f-]*.jpg
+
+# Temporary / scraper tools
+SoncaTokenDownloader*
+deepseek_python_*
+README_SoncaTokenDownloader.txt
+sc_*.xls
+midi-*
+images.png
+
+# User request: exclude tools and CSV files
+_tools_and_sources/
+*.csv

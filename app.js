@@ -8,7 +8,7 @@
 (function () {
   'use strict';
 
-  // 7 Karaoke Systems with Official Brand Logos
+  // 12 Karaoke Systems with Official Brand Logos
   const COMPANIES = {
     a: { key: 'a', name: 'Arirang 5 số (Vol 66)', short: 'Arirang', varName: 'KARAOKE_DATA_A', file: 'arirang', logo: 'icons/arirang5.png' },
     acnos: { key: 'acnos', name: 'Acnos Soncamedia (Vol 62)', short: 'Acnos', varName: 'KARAOKE_DATA_ACNOS', file: 'acnos', logo: 'icons/sonca6.png' },
@@ -17,10 +17,14 @@
     c: { key: 'c', name: 'California 6 số', short: 'California', varName: 'KARAOKE_DATA_C', file: 'california', logo: 'icons/california6.png' },
     v: { key: 'v', name: 'Việt KTV 6 số', short: 'Việt KTV', varName: 'KARAOKE_DATA_V', file: 'vietktv', logo: 'icons/vietktv6.png' },
     t: { key: 't', name: 'Vitek VTB', short: 'Vitek VTB', varName: 'KARAOKE_DATA_T', file: 'vitek', logo: 'icons/vitekvtb6.png' },
-    dh: { key: 'dh', name: 'Đông Hải KTV (Vol 83B)', short: 'Đông Hải', varName: 'KARAOKE_DATA_DH', file: 'donghai', logo: 'icons/DONGHAI.jpg' }
+    dh: { key: 'dh', name: 'Đông Hải KTV (Vol 83B)', short: 'Đông Hải', varName: 'KARAOKE_DATA_DH', file: 'donghai', logo: 'icons/DONGHAI.jpg' },
+    calivcd: { key: 'calivcd', name: 'California VCD (888K/9999K)', short: 'Cali VCD', varName: 'KARAOKE_DATA_CALIVCD', file: 'calivcd', logo: 'icons/vcd888k.png' },
+    cavs: { key: 'cavs', name: 'CAVS VCD 9684', short: 'CAVS', varName: 'KARAOKE_DATA_CAVS', file: 'cavs', logo: 'icons/cavslogo.png' },
+    daehung: { key: 'daehung', name: 'Daehung Midi Vision (Vol 29)', short: 'Midi Vision', varName: 'KARAOKE_DATA_DAEHUNG', file: 'daehung', logo: 'icons/daehung.png' },
+    tiendat: { key: 'tiendat', name: 'Tiến Đạt VCD 2004', short: 'Tiến Đạt', varName: 'KARAOKE_DATA_TIENDAT', file: 'tiendat', logo: 'icons/tiendatlogo.jpg' }
   };
 
-  const CURRENT_APP_VERSION = '2.4.1';
+  const CURRENT_APP_VERSION = '2.5.0';
 
   const GENRE_NAMES = {
     0: 'Khác',
@@ -497,9 +501,9 @@
         if (filter === 'vocal') return item.isVocal;
         if (filter === 'chorus') return item.isChorus;
         if (filter === 'vi') return item.lan === 0;
-        if (filter === 'en') return item.lan === 1;
+        if (filter === 'en') return item.lan >= 1;
         if (filter === 'remix') return item.isRemix;
-        if (filter === 'foreign_vi') return item.isForeignVi;
+        if (filter === 'foreign_vi') return item.lan === 2 || item.isForeignVi;
         if (filter === 'g1') return item.g === 1;
         if (filter === 'g2') return item.g === 2;
         if (filter === 'g3') return item.g === 3;
@@ -522,8 +526,15 @@
     // Filter by Search Query
     if (queryNorm) {
       if (isNumberQuery) {
+        const queryNoZero = query.replace(/^0+/, '');
         results = results.filter(item => {
-          return item.masoStr.startsWith(query) || item.masoStr.includes(query) || (item.maso6 && (item.maso6.startsWith(query) || item.maso6.includes(query)));
+          if (item.masoStr.startsWith(query) || item.masoStr.includes(query)) return true;
+          if (queryNoZero) {
+            const masoNoZero = item.masoStr.replace(/^0+/, '');
+            if (masoNoZero.startsWith(queryNoZero) || masoNoZero.includes(queryNoZero)) return true;
+          }
+          if (item.maso6 && (item.maso6.startsWith(query) || item.maso6.includes(query))) return true;
+          return false;
         });
       } else {
         results = results.filter(item => {
@@ -556,9 +567,19 @@
     // Apply Sorting
     if (!queryNorm || isNumberQuery) {
       if (state.currentSort === 'maso_asc') {
-        results.sort((a, b) => a.maso - b.maso);
+        results.sort((a, b) => {
+          const na = parseInt(a.maso, 10);
+          const nb = parseInt(b.maso, 10);
+          if (!isNaN(na) && !isNaN(nb)) return na - nb;
+          return a.masoStr.localeCompare(b.masoStr);
+        });
       } else if (state.currentSort === 'maso_desc') {
-        results.sort((a, b) => b.maso - a.maso);
+        results.sort((a, b) => {
+          const na = parseInt(a.maso, 10);
+          const nb = parseInt(b.maso, 10);
+          if (!isNaN(na) && !isNaN(nb)) return nb - na;
+          return b.masoStr.localeCompare(a.masoStr);
+        });
       } else if (state.currentSort === 'title_asc') {
         results.sort((a, b) => a.title.localeCompare(b.title, 'vi'));
       } else if (state.currentSort === 'vol_desc') {
@@ -698,7 +719,7 @@
             ${item.isChorus ? '<span class="badge badge-chorus">💋 Có bè (Chorus)</span>' : ''}
             ${item.maso6 ? `<span class="badge badge-hdmi">HDMI: ${item.maso6}</span>` : ''}
             <span class="badge badge-genre">${genreLabel}</span>
-            ${item.lan === 1 ? `<span class="badge badge-lang">Ngoại ngữ</span>` : ''}
+            ${item.lan === 1 ? `<span class="badge badge-lang">Tiếng Anh</span>` : item.lan === 2 ? `<span class="badge badge-lang">Tiếng Hoa</span>` : item.lan === 3 ? `<span class="badge badge-lang">Tiếng Hàn</span>` : item.lan === 4 ? `<span class="badge badge-lang">Tiếng Nhật</span>` : item.lan !== 0 ? `<span class="badge badge-lang">Ngoại ngữ</span>` : ''}
           </div>
           <button type="button" class="btn-card-yt" data-action="youtube" title="Hát Karaoke ngay trên YouTube">
             ▶️ Hát YouTube
@@ -1089,7 +1110,8 @@
 
     el.modalVolBadge.textContent = item.v ? `Vol ${item.v}` : 'Vol --';
     el.modalGenreBadge.textContent = GENRE_NAMES[item.g] || 'Khác';
-    el.modalLangBadge.textContent = item.lan === 1 ? 'Ngoại ngữ' : 'Tiếng Việt';
+    const langLabels = { 0: 'Tiếng Việt', 1: 'Tiếng Anh', 2: 'Tiếng Hoa', 3: 'Tiếng Hàn', 4: 'Tiếng Nhật' };
+    el.modalLangBadge.textContent = langLabels[item.lan] || (item.lan !== 0 ? 'Ngoại ngữ' : 'Tiếng Việt');
 
     updateModalFavButton(isFav);
     el.modalIntroText.textContent = item.intro || 'Đang cập nhật câu mở đầu bài hát...';
@@ -1920,10 +1942,10 @@ ${escapeHtml(lyrics)}
         return;
       }
 
-      // 1-8 switches company
-      const compKeys = ['a', 'acnos', 'm', 'p', 'c', 'v', 't', 'dh'];
+      // 1-9 switches company
+      const compKeys = Object.keys(COMPANIES);
       const num = parseInt(e.key, 10);
-      if (num >= 1 && num <= 8) {
+      if (num >= 1 && num <= compKeys.length) {
         switchCompany(compKeys[num - 1]);
       }
     });

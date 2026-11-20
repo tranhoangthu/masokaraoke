@@ -1,4 +1,4 @@
-const CACHE_NAME = 'karaoke-vn-v2.4.1';
+const CACHE_NAME = 'karaoke-vn-v2.5.0';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -27,6 +27,10 @@ const CORE_ASSETS = [
   './icons/vitekvtb6.png',
   './icons/ic_vitek.png',
   './icons/DONGHAI.jpg',
+  './icons/vcd888k.png',
+  './icons/cavslogo.png',
+  './icons/daehung.png',
+  './icons/tiendatlogo.jpg',
   './data/arirang.js',
   './data/musiccore.js',
   './data/california.js',
@@ -35,6 +39,10 @@ const CORE_ASSETS = [
   './data/vitek.js',
   './data/acnos.js',
   './data/donghai.js',
+  './data/calivcd.js',
+  './data/cavs.js',
+  './data/daehung.js',
+  './data/tiendat.js',
   './sweetalert2.all.min.js'
 ];
 

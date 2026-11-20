@@ -1,13 +1,15 @@
 {
-  "version": "2.4.1",
-  "buildDate": "2026-10-01",
-  "title": "Bản cập nhật Acnos Vol 62 đầy đủ & Làm giàu dữ liệu Đông Hải KTV",
-  "subtitle": "Bổ sung 17,806 bài Acnos Vol 62 và tích hợp Nhạc, Lời, Lời đầu cho Đông Hải Vol 82B & 83B",
+  "version": "2.5.0",
+  "buildDate": "2026-11-20",
+  "title": "Bản cập nhật Đại Tiệc VCD Karaoke: Cali 888K/9999K, CAVS 9684, Daehung Vol 29 & Tiến Đạt 2004",
+  "subtitle": "Bổ sung 50,135 bài hát VCD MIDI kinh điển nâng tổng kho nhạc toàn hệ thống vượt mốc 158,000 bài",
   "changelog": [
-    "Bổ sung danh mục bài hát đầy đủ Acnos Soncamedia Vol 62 với 17,806 bài hát tiếng Việt & tiếng Anh, hỗ trợ tìm kiếm cả mã 5 số và 6 số HDMI",
-    "Đối chiếu và làm giàu thông tin Nhạc sĩ sáng tác, Tác giả lời và Lời đầu mở đầu bài hát cho KTV Vol 82B và hanco Vol 83B Đông Hải",
-    "Tối ưu hiển thị và xuất bản danh mục Excel LIST Nhạc Đông Hải có đầy đủ tác giả và lời đầu",
-    "Hỗ trợ bộ dữ liệu toàn hệ thống vượt mốc 107,900 bài hát karaoke"
+    "Tích hợp danh mục VCD California 888K & 9999K với 18,688 bài hát đầy đủ tiếng Việt, Quốc tế, Hoa, Hàn, Nhật",
+    "Tích hợp danh mục VCD CAVS 9684 với 9,684 bài hát MIDI chất lượng cao kèm thông tin tác giả và ca sĩ",
+    "Tích hợp danh mục VCD Arirang Daehung Midi Vision Vol 29 với 19,711 bài hát đa ngôn ngữ",
+    "Tích hợp danh mục VCD Tiến Đạt 2004 với 2,052 bài hát 5 số kinh điển",
+    "Thêm icon và biểu trưng thương hiệu chính thức cho cả 4 hệ thống đầu đĩa VCD",
+    "Nâng tổng dung lượng kho dữ liệu toàn bộ ứng dụng lên 158,054 bài hát karaoke"
   ],
   "datasets": {
     "arirang": {
@@ -43,6 +45,22 @@
     "vitek": {
       "vol": "Vol 3.25",
       "count": 8068
+    },
+    "calivcd": {
+      "vol": "888K/9999K",
+      "count": 18688
+    },
+    "cavs": {
+      "vol": "VCD 9684",
+      "count": 9684
+    },
+    "daehung": {
+      "vol": "Vol 29",
+      "count": 19711
+    },
+    "tiendat": {
+      "vol": "2004",
+      "count": 2052
     }
   },
   "events": {
@@ -124,5 +142,5 @@
       ]
     }
   },
-  "totalSongs": 107919
+  "totalSongs": 158054
 }
